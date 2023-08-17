@@ -1,11 +1,12 @@
 const express = require('express');
 const path = require('path');
 const fs = require('fs');
-
+const { clog } = require('./middleware/clog');
 const notesFilePath = path.join(__dirname, './db/db.json');
 const app = express();
 const PORT = process.env.PORT || 80;
 
+app.use(clog);
 app.use(express.static('public'));
 app.use(express.json());
 
